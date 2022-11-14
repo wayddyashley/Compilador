@@ -33,6 +33,54 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    private void tablasimbolos() throws IOException{
+        int contT = 1;
+        
+        String expr = (String) txtTexto.getText();
+        Lexer lexer = new Lexer(new StringReader(expr));
+        String resultado = "ID\t " + "\tNombre\n";
+        
+        while (true) {
+            Tokens token = lexer.yylex();
+            if (token == null) {
+                txtTraducido.setText(resultado);
+                return;
+            }
+            switch(token){
+                case Identificador:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                case Suma:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                case Resta:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                case Multiplicacion:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                case Division:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                case Igual:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                case Main:
+                    contT++;
+                    resultado+= contT + "\t\t"+ lexer.lexeme + "\n";
+                    break;
+                default:
+                    break;  
+            }
+        }
+    }
+    
     private void analizarLexico() throws IOException{
         int cont = 1;
         
@@ -51,99 +99,99 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     resultado += "LINEA " + cont + "\n";
                     break;
                 case Comillas:
-                    resultado += "  <Comillas>\t\t" + lexer.lexeme + "\n";
+                    resultado += "  Comillas\t\t" + lexer.lexeme + "\n";
                     break;
                 case Cadena:
-                    resultado += "  <Tipo de dato>\t" + lexer.lexeme + "\n";
+                    resultado += "  Tipo de dato\t" + lexer.lexeme + "\n";
                     break;
                 case T_dato:
-                    resultado += "  <Tipo de dato>\t" + lexer.lexeme + "\n";
+                    resultado += "  Tipo de dato\t" + lexer.lexeme + "\n";
                     break;
                 case If:
-                    resultado += "  <Reservada if>\t" + lexer.lexeme + "\n";
+                    resultado += "  Reservada if\t" + lexer.lexeme + "\n";
                     break;
                 case Else:
-                    resultado += "  <Reservada else>\t" + lexer.lexeme + "\n";
+                    resultado += "  Reservada else\t" + lexer.lexeme + "\n";
                     break;
                 case Do:
-                    resultado += "  <Reservada do>\t" + lexer.lexeme + "\n";
+                    resultado += "  Reservada do\t" + lexer.lexeme + "\n";
                     break;
                 case While:
-                    resultado += "  <Reservada while>\t" + lexer.lexeme + "\n";
+                    resultado += "  Reservada while\t" + lexer.lexeme + "\n";
                     break;
                 case For:
-                    resultado += "  <Reservada while>\t" + lexer.lexeme + "\n";
+                    resultado += "  Reservada while\t" + lexer.lexeme + "\n";
                     break;
                 case Igual:
-                    resultado += "  <Operador igual>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador igual\t" + lexer.lexeme + "\n";
                     break;
                 case Suma:
-                    resultado += "  <Operador suma>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador suma\t" + lexer.lexeme + "\n";
                     break;
                 case Resta:
-                    resultado += "  <Operador resta>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador resta\t" + lexer.lexeme + "\n";
                     break;
                 case Multiplicacion:
-                    resultado += "  <Operador multiplicacion>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador multiplicacion\t" + lexer.lexeme + "\n";
                     break;
                 case Division:
-                    resultado += "  <Operador division>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador division\t" + lexer.lexeme + "\n";
                     break;
                 case Op_logico:
-                    resultado += "  <Operador logico>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador logico\t" + lexer.lexeme + "\n";
                     break;
                 case Op_incremento:
-                    resultado += "  <Operador incremento>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador incremento\t" + lexer.lexeme + "\n";
                     break;
                 case Op_relacional:
-                    resultado += "  <Operador relacional>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador relacional\t" + lexer.lexeme + "\n";
                     break;
                 case Op_atribucion:
-                    resultado += "  <Operador atribucion>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador atribucion\t" + lexer.lexeme + "\n";
                     break;
                 case Op_booleano:
-                    resultado += "  <Operador booleano>\t" + lexer.lexeme + "\n";
+                    resultado += "  Operador booleano\t" + lexer.lexeme + "\n";
                     break;
                 case Parentesis_a:
-                    resultado += "  <Parentesis de apertura>\t" + lexer.lexeme + "\n";
+                    resultado += "  Parentesis de apertura\t" + lexer.lexeme + "\n";
                     break;
                 case Parentesis_c:
-                    resultado += "  <Parentesis de cierre>\t" + lexer.lexeme + "\n";
+                    resultado += "  Parentesis de cierre\t" + lexer.lexeme + "\n";
                     break;
                 case Llave_a:
-                    resultado += "  <Llave de apertura>\t" + lexer.lexeme + "\n";
+                    resultado += "  Llave de apertura\t" + lexer.lexeme + "\n";
                     break;
                 case Llave_c:
-                    resultado += "  <Llave de cierre>\t" + lexer.lexeme + "\n";
+                    resultado += "  Llave de cierre\t" + lexer.lexeme + "\n";
                     break;
                 case Corchete_a:
-                    resultado += "  <Corchete de apertura>\t" + lexer.lexeme + "\n";
+                    resultado += "  Corchete de apertura\t" + lexer.lexeme + "\n";
                     break;
                 case Corchete_c:
-                    resultado += "  <Corchete de cierre>\t" + lexer.lexeme + "\n";
+                    resultado += "  Corchete de cierre\t" + lexer.lexeme + "\n";
                     break;
                 case Main:
-                    resultado += "  <Reservada main>\t" + lexer.lexeme + "\n";
+                    resultado += "  Reservada main\t" + lexer.lexeme + "\n";
                     break;
                 case P_coma:
-                    resultado += "  <Punto y coma>\t" + lexer.lexeme + "\n";
+                    resultado += "  Punto y coma\t" + lexer.lexeme + "\n";
                     break;
                 case Identificador:
-                    resultado += "  <Identificador>\t\t" + lexer.lexeme + "\n";
+                    resultado += "  Identificador\t\t" + lexer.lexeme + "\n";
                     break;
                 case Numero:
-                    resultado += "  <Numero>\t\t" + lexer.lexeme + "\n";
+                    resultado += "  Numero\t\t" + lexer.lexeme + "\n";
                     break;
                 case ERROR:
-                    resultado += "  <Simbolo no definido>\n";
+                    resultado += "  Simbolo no definido\n";
                     break;
                 default:
-                    resultado += "  < " + lexer.lexeme + " >\n";
+                    resultado += "   " + lexer.lexeme + " \n";
                     break;
             }
         }
     }
-    private void analizarLexico2() throws IOException{
+    private void analizarSemantica() throws IOException{
         int cont = 1;
         
         String expr = (String) txtTexto.getText();
@@ -246,7 +294,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     resultado += "  <Se declara un numero>" + lexer.lexeme + "\n";
                     break;
                 case ERROR:
-                    resultado += "  <Se declara un simbolor no encontrado>";
+                    resultado += "  <Se declara un simbolo no definido>";
                     break;
                 default:
                     resultado += "  < " + lexer.lexeme + " >\n";
@@ -494,7 +542,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTraducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraducirActionPerformed
-        
+        try {
+            tablasimbolos();
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnTraducirActionPerformed
 
     private void btnAnalizarSinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarSinActionPerformed
@@ -544,10 +596,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnAnalizarSemanticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarSemanticoActionPerformed
         try {
-            analizarLexico2();
+            analizarSemantica();
         } catch (IOException ex) {
             Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_btnAnalizarSemanticoActionPerformed
 
     private void btnLimpiarLexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarLexActionPerformed
